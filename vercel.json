@@ -19,6 +19,14 @@
       "destination": "/images/$1"
     },
     {
+      "source": "/pages/(.*)",
+      "destination": "/backend/server.js"
+    },
+    {
+      "source": "/admin/(.*)",
+      "destination": "/backend/server.js"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
