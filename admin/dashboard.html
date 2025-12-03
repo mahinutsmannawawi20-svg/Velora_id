@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Velora</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .admin-layout {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            min-height: 100vh;
+        }
+        .admin-sidebar {
+            background: var(--bg-gray-50);
+            border-right: 1px solid var(--border-color);
+            padding: 2rem;
+        }
+        .admin-content {
+            padding: 2rem;
+        }
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .stat-box {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            transition: var(--transition);
+        }
+        .stat-box:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        .sidebar-nav {
+            list-style: none;
+            margin-top: 2rem;
+        }
+        .sidebar-nav li {
+            margin-bottom: 0.5rem;
+        }
+        .sidebar-nav a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            transition: var(--transition);
+        }
+        .sidebar-nav a:hover, .sidebar-nav a.active {
+            background: var(--primary-color);
+            color: white;
+        }
+        .data-table {
+            width: 100%;
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+        .data-table th {
+            background: var(--bg-gray-50);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .data-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <div class="admin-sidebar">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <img src="../images/logo.png" alt="Velora" style="height: 50px;">
+            </div>
+            <div style="background: var(--bg-gray-100); padding: 1rem; border-radius: var(--radius-md); margin-bottom: 1rem;">
+                <p style="font-weight: 600; margin-bottom: 0.25rem;" id="adminName">Loading...</p>
+                <p style="font-size: 0.875rem; color: var(--text-muted);" id="adminEmail">Loading...</p>
+            </div>
+            <ul class="sidebar-nav">
+                <li><a href="dashboard.html" class="active">📊 Dashboard</a></li>
+                <li><a href="projects.html">🎯 Projects</a></li>
+                <li><a href="blog.html">📝 Blog Posts</a></li>
+                <li><a href="testimonials.html">⭐ Testimonials</a></li>
+                <li><a href="messages.html">📧 Contacts</a></li>
+                <li><a href="#" onclick="logout()">🚪 Logout</a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="admin-content">
+            <div class="admin-header">
+                <h1 style="font-size: 2rem; font-weight: 700;">Dashboard</h1>
+                <button class="btn btn-secondary" onclick="window.location.href='/'">View Website →</button>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="stat-grid" id="statsGrid">
+                <div class="stat-box">
+                    <div class="stat-value" id="totalProjects">0</div>
+                    <div class="stat-label">Total Projects</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="totalBlogPosts">0</div>
+                    <div class="stat-label">Blog Posts</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="totalTestimonials">0</div>
+                    <div class="stat-label">Testimonials</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="totalContacts">0</div>
+                    <div class="stat-label">Contact Submissions</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="newContacts">0</div>
+                    <div class="stat-label">New Contacts</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="totalBlogViews">0</div>
+                    <div class="stat-label">Total Blog Views</div>
+                </div>
+            </div>
+
+            <!-- Recent Contacts -->
+            <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem;">Recent Contact Submissions</h2>
+            <div style="background: white; border: 1px solid var(--border-color); border-radius: var(--radius-lg); overflow-x: auto;">
+                <table class="data-table" id="recentContactsTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Company</th>
+                            <th>Service</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="recentContactsBody">
+                        <tr>
+                            <td colspan="5" style="text-align: center; padding: 2rem;">Loading...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Check authentication
+        const token = localStorage.getItem('adminToken');
+        const user = JSON.parse(localStorage.getItem('adminUser') || '{}');
+        
+        if (!token) {
+            window.location.href = '/admin/login';
+        }
+        
+        // Display user info
+        document.getElementById('adminName').textContent = user.name || 'Admin';
+        document.getElementById('adminEmail').textContent = user.email || '';
+        
+        // Load dashboard stats
+        async function loadStats() {
+            try {
+                const response = await fetch('/api/admin/stats', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                
+                if (!response.ok) {
+                    if (response.status === 401) {
+                        localStorage.removeItem('adminToken');
+                        localStorage.removeItem('adminUser');
+                        window.location.href = '/admin/login';
+                        return;
+                    }
+                    throw new Error('Failed to load stats');
+                }
+                
+                const stats = await response.json();
+                
+                // Update stat boxes
+                document.getElementById('totalProjects').textContent = stats.totalProjects;
+                document.getElementById('totalBlogPosts').textContent = stats.totalBlogPosts;
+                document.getElementById('totalTestimonials').textContent = stats.totalTestimonials;
+                document.getElementById('totalContacts').textContent = stats.totalContacts;
+                document.getElementById('newContacts').textContent = stats.newContacts;
+                document.getElementById('totalBlogViews').textContent = stats.totalBlogViews;
+                
+                // Update recent contacts table
+                const tbody = document.getElementById('recentContactsBody');
+                if (stats.recentContacts && stats.recentContacts.length > 0) {
+                    tbody.innerHTML = stats.recentContacts.map(contact => `
+                        <tr>
+                            <td>${contact.first_name} ${contact.last_name}</td>
+                            <td>${contact.email}</td>
+                            <td>${contact.company || '-'}</td>
+                            <td>${contact.service || '-'}</td>
+                            <td>${new Date(contact.created_at).toLocaleDateString('id-ID')}</td>
+                        </tr>
+                    `).join('');
+                } else {
+                    tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 2rem; color: var(--text-muted);">No contacts yet</td></tr>';
+                }
+            } catch (error) {
+                alert('Error loading dashboard: ' + error.message);
+            }
+        }
+        
+        // Logout function
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                localStorage.removeItem('adminToken');
+                localStorage.removeItem('adminUser');
+                window.location.href = '/admin/login';
+            }
+        }
+        
+        // Load stats on page load
+        loadStats();
+    </script>
+</body>
+</html>

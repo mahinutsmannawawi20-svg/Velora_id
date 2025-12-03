@@ -1,0 +1,29 @@
+{
+  "name": "velora-website",
+  "version": "1.0.0",
+  "description": "Velora Professional Company Website - Full Stack",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js",
+    "init-db": "node backend/config/initDatabase.js"
+  },
+  "keywords": ["velora", "company", "website", "full-stack"],
+  "author": "Velora Team",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "@neondatabase/serverless": "^0.10.1",
+    "multer": "^1.4.5-lts.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "engines": {
+    "node": "18.x"
+  }
+}

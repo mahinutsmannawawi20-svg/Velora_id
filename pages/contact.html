@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hubungi Velora - Konsultasi gratis untuk transformasi digital bisnis Anda">
+    <title>Hubungi Kami - Velora</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <div class="container">
+            <p>💬 Tim kami siap membantu Anda 24/7 - <a href="mailto:velora20.id@gmail.com">velora20.id@gmail.com</a></p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="/"><img src="../images/logo.png" alt="Velora" class="logo"></a>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="/" class="nav-link">Home</a></li>
+                    <li><a href="/pages/about" class="nav-link">Tentang</a></li>
+                    <li><a href="/#services" class="nav-link">Layanan</a></li>
+                    <li><a href="/pages/portfolio" class="nav-link">Portfolio</a></li>
+                    <li><a href="/pages/blog" class="nav-link">Blog</a></li>
+                    <li><a href="/pages/contact" class="nav-link">Kontak</a></li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <a href="/admin/login" class="btn-primary-nav">Admin</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="hero" style="padding: 5rem 0 3rem;">
+        <div class="container">
+            <div class="section-header-pro">
+                <h1 style="font-size: 3rem;">Hubungi Kami</h1>
+                <p>Tim kami siap membantu menjawab pertanyaan dan kebutuhan bisnis Anda</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2>Ingin Berdiskusi?</h2>
+                    <p>Silakan hubungi kami melalui informasi di bawah ini atau isi form untuk mendapat  respons cepat dari tim kami.</p>
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <strong>Email</strong>
+                            <a href="mailto:velora20.id@gmail.com">velora20.id@gmail.com</a>
+                        </div>
+                        <div class="contact-method">
+                            <strong>Whatsapp</strong>
+                            <a href="https://wa.me/6285117776596" target="_blank">+62 851-1777-6596</a>
+                        </div>
+                        <div class="contact-method">
+                            <strong>Alamat</strong>
+                            <p>Hegarmanah, Cikoneng, Pasirjambu, Kab. Bandung</p>
+                        </div>
+                        <div class="contact-method">
+                            <strong>Jam Kerja</strong>
+                            <p>Senin - Jumat: 09:00 - 18:00 WIB<br>Sabtu: 09:00 - 15:00 WIB</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">Nama Depan *</label>
+                                <input type="text" id="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Nama Belakang *</label>
+                                <input type="text" id="lastName" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Perusahaan *</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Nama Perusahaan</label>
+                            <input type="text" id="company">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Layanan yang Dibutuhkan *</label>
+                            <select id="service" required>
+                                <option value="">Pilih layanan</option>
+                                <option value="consulting">Konsultasi IT</option>
+                                <option value="development">Pengembangan Software</option>
+                                <option value="cloud">Cloud Solutions</option>
+                                <option value="integration">System Integration</option>
+                                <option value="analytics">Data Analytics</option>
+                                <option value="security">Cybersecurity</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Ceritakan tentang proyek Anda *</label>
+                            <textarea id="message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">
+                            <span>Kirim Pesan</span>
+                        </button>
+                        <p class="form-note">* Field wajib diisi</p>
+                    </form>
+                    <div id="formMessage" style="display: none; padding: 1rem; border-radius: var(--radius-md); margin-top: 1rem;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="../images/logo.png" alt="Velora ID" class="footer-logo">
+                    <p>Solusi Digital Anda</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Layanan</h4>
+                    <ul>
+                        <li><a href="/">Konsultasi IT</a></li>
+                        <li><a href="/">Pengembangan Software</a></li>
+                        <li><a href="/">Cloud Solutions</a></li>
+                        <li><a href="/">System Integration</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Perusahaan</h4>
+                    <ul>
+                        <li><a href="/pages/about">Tentang Kami</a></li>
+                        <li><a href="/pages/portfolio">Portfolio</a></li>
+                        <li><a href="/pages/blog">Blog</a></li>
+                        <li><a href="/pages/contact">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">SLA</a></li>
+                        <li><a href="#">Security</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Velora ID. All rights reserved.</p>
+                <div class="footer-social">
+                    <a href="#">LinkedIn</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">Facebook</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script>
+        // Handle contact form submission
+        document.getElementById('contactForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = {
+                first_name: document.getElementById('firstName').value,
+                last_name: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                company: document.getElementById('company').value,
+                service: document.getElementById('service').value,
+                message: document.getElementById('message').value
+            };
+            
+            const messageDiv = document.getElementById('formMessage');
+            
+            try {
+                const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok) {
+                    messageDiv.style.display = 'block';
+                    messageDiv.style.background = '#F0FDF4';
+                    messageDiv.style.color = '#10B981';
+                    messageDiv.style.border = '1px solid #10B981';
+                    messageDiv.textContent = result.message || 'Pesan berhasil dikirim! Kami akan menghubungi Anda segera.';
+                    
+                    // Reset form
+                    document.getElementById('contactForm').reset();
+                } else {
+                    throw new Error(result.error || 'Gagal mengirim pesan');
+                }
+            } catch (error) {
+                messageDiv.style.display = 'block';
+                messageDiv.style.background = '#FEF3F2';
+                messageDiv.style.color = '#EF4444';
+                messageDiv.style.border = '1px solid #EF4444';
+                messageDiv.textContent = 'Gagal mengirim pesan. ' + error.message + '. Pastikan server backend sudah berjalan.';
+            }
+        });
+    </script>
+</body>
+</html>

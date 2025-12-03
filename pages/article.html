@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article - Velora ID</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .article-header {
+            padding: 120px 0 40px;
+            background: white;
+        }
+        .article-meta {
+            display: flex;
+            gap: 1.5rem;
+            color: #64748b;
+            font-size: 0.875rem;
+            margin-bottom: 2rem;
+        }
+        .article-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .article-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 1rem;
+            margin-bottom: 3rem;
+        }
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: #334155;
+        }
+        .article-content p {
+            margin-bottom: 1.5rem;
+        }
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e2e8f0;
+        }
+        .share-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        .share-btn:hover {
+            transform: translateY(-3px);
+        }
+        .bg-twitter { background: #1da1f2; }
+        .bg-facebook { background: #1877f2; }
+        .bg-linkedin { background: #0077b5; }
+        .bg-whatsapp { background: #25d366; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo">
+                <img src="../images/logo.png" alt="Velora Logo">
+            </a>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="blog.html" class="active">Blog</a>
+                <a href="contact.html">Contact</a>
+                <a href="../admin/login.html" class="btn-primary">Admin</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Content -->
+    <article class="article-header">
+        <div class="container">
+            <a href="blog.html" class="back-link" style="margin-bottom: 2rem; display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; color: #64748b;">
+                <i class="fas fa-arrow-left"></i> Back to Blog
+            </a>
+            
+            <div id="article-container">
+                <div class="loading-spinner">
+                    <i class="fas fa-spinner fa-spin"></i> Loading article...
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="../images/logo.png" alt="Velora Logo" style="height: 40px; margin-bottom: 1rem;">
+                    <p>Mitra transformasi digital terpercaya untuk pertumbuhan bisnis Anda.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="../index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="portfolio.html">Portfolio</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-envelope"></i> velora20.id@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> +62851-1777-6596</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Hegarmanah, Cikoneng, Pasirjambu, Kab. Bandung</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Velora ID. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const slug = urlParams.get('slug');
+            const container = document.getElementById('article-container');
+
+            if (!slug) {
+                container.innerHTML = '<div class="alert alert-error">Article not found</div>';
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/blog/${slug}`);
+                if (!response.ok) throw new Error('Failed to fetch article');
+                
+                const post = await response.json();
+                const date = new Date(post.created_at).toLocaleDateString('id-ID', {
+                    year: 'numeric', month: 'long', day: 'numeric'
+                });
+
+                container.innerHTML = `
+                    <h1 class="section-title" style="text-align: left; font-size: 2.5rem;">${post.title}</h1>
+                    
+                    <div class="article-meta">
+                        <span><i class="far fa-calendar"></i> ${date}</span>
+                        <span><i class="far fa-user"></i> ${post.author}</span>
+                        <span><i class="far fa-folder"></i> ${post.category}</span>
+                        <span><i class="far fa-eye"></i> ${post.views} views</span>
+                    </div>
+
+                    <img src="${post.image_url || 'https://via.placeholder.com/1200x600'}" alt="${post.title}" class="article-image">
+                    
+                    <div class="article-content">
+                        ${post.content.split('\n').map(p => `<p>${p}</p>`).join('')}
+                    </div>
+
+                    <div class="share-buttons">
+                        <span style="display: flex; align-items: center; font-weight: 600;">Share this article:</span>
+                        <a href="#" class="share-btn bg-twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="share-btn bg-facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="share-btn bg-linkedin"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="share-btn bg-whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                `;
+            } catch (error) {
+                console.error('Error:', error);
+                container.innerHTML = `
+                    <div class="alert alert-error">
+                        Failed to load article. Please try again later.
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>
