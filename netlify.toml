@@ -7,7 +7,17 @@
 
 [[redirects]]
   from = "/api/*"
-  to = "/.netlify/functions/api/:splat"
+  to = "/.netlify/functions/api"
+  status = 200
+
+[[redirects]]
+  from = "/pages/*"
+  to = "/.netlify/functions/api"
+  status = 200
+
+[[redirects]]
+  from = "/admin/*"
+  to = "/.netlify/functions/api"
   status = 200
 
 [[redirects]]
