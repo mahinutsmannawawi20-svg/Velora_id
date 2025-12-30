@@ -555,8 +555,11 @@ section {
     background: var(--bg-white);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-lg);
-    padding: var(--spacing-xl);
+    overflow: hidden; /* Ensure image corners are clipped */
     transition: var(--transition);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .service-card-pro:hover {
@@ -565,39 +568,81 @@ section {
     transform: translateY(-5px);
 }
 
-.service-icon-pro {
-    margin-bottom: var(--spacing-md);
-    transition: var(--transition);
+.card-image-wrapper {
+    height: 200px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
 }
 
-.service-card-pro:hover .service-icon-pro {
-    transform: scale(1.1);
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.service-card-pro:hover .card-image {
+    transform: scale(1.05);
+}
+
+.card-content {
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card-label {
+    color: var(--primary-color);
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .service-card-pro h3 {
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-size: 1.25rem;
+    font-weight: 700;
     margin-bottom: var(--spacing-sm);
     color: var(--text-primary);
+    line-height: 1.4;
 }
 
 .service-card-pro p {
     color: var(--text-secondary);
-    margin-bottom: var(--spacing-md);
-    line-height: 1.7;
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.6;
+    font-size: 0.95rem;
 }
 
-.service-link-pro {
-    color: var(--primary-color);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.9rem;
-    transition: var(--transition);
+.card-category {
+    color: var(--text-muted) !important;
+    font-size: 0.8rem !important;
+    margin-bottom: 0.75rem !important;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
 }
 
-.service-link-pro:hover {
-    color: var(--primary-dark);
-    text-decoration: underline;
+.card-tech {
+    margin-top: auto;
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--border-color);
+    font-size: 0.85rem !important;
+    color: var(--text-secondary);
+}
+
+.card-meta {
+    margin-top: auto;
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
 }
 
 /* Solutions Section */
