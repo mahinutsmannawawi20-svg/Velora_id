@@ -8,7 +8,7 @@ const faqs = [
     },
     {
         question: "Di mana hosting-nya?",
-        answer: "Kami menggunakan VPS berkualitas (DigitalOcean, Vultr, atau provider lokal). Untuk website statis, bisa pakai Vercel/Netlify yang gratis dan cepat. Semua sudah termasuk SSL (HTTPS)."
+        answer: "Kami menggunakan infrastruktur Cloud Server (VPS) Enterprise yang stabil, aman, dan cepat. Semua paket website sudah termasuk konfigurasi server yang optimal dan sertifikat keamanan SSL (HTTPS) standar industri."
     },
     {
         question: "Bagaimana proses maintenance?",
