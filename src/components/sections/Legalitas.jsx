@@ -132,7 +132,7 @@ const Legalitas = () => {
                                 <Shield className="w-7 h-7 text-cyan-400" />
                             </div>
                             <h4 className="text-white font-semibold text-lg mb-2">Pemilik</h4>
-                            <p className="text-slate-300 font-medium">Mahin Utsman Nawawi</p>
+                            <p className="text-slate-300 font-medium">Mahin Utsman Nawawi, S.H.</p>
                             <p className="text-slate-500 text-sm mt-1">Founder & CEO</p>
                         </div>
 
