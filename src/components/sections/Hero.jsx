@@ -7,8 +7,14 @@ const Hero = () => {
             <div className="absolute inset-0 z-0">
                 <img
                     src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80"
+                    srcSet="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=640&q=80 640w,
+                            https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80 1200w,
+                            https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80 1920w"
+                    sizes="(max-width: 640px) 100vw, 100vw"
                     alt="Office Background"
                     className="w-full h-full object-cover"
+                    loading="eager"
+                    fetchPriority="high"
                 />
                 <div className="absolute inset-0 bg-gradient-to-br from-gray-900/90 via-gray-900/80 to-primary/50"></div>
             </div>

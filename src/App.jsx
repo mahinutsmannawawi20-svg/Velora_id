@@ -1,38 +1,42 @@
+import { Suspense, lazy } from 'react';
 import Navbar from './components/layout/Navbar';
-import Footer from './components/layout/Footer';
 import Hero from './components/sections/Hero';
-import About from './components/sections/About';
-import Founder from './components/sections/Founder';
-import Legalitas from './components/sections/Legalitas';
-import Services from './components/sections/Services';
-import FeaturedProduct from './components/sections/FeaturedProduct';
-import Portfolio from './components/sections/Portfolio';
-import Workflow from './components/sections/Workflow';
-import Testimonials from './components/sections/Testimonials';
-import Blog from './components/sections/Blog';
-import FAQ from './components/sections/FAQ';
-import Contact from './components/sections/Contact';
+
+// Lazy load below-the-fold content to improve initial load speed (LCP)
+const About = lazy(() => import('./components/sections/About'));
+const Founder = lazy(() => import('./components/sections/Founder'));
+const Legalitas = lazy(() => import('./components/sections/Legalitas'));
+const Services = lazy(() => import('./components/sections/Services'));
+const FeaturedProduct = lazy(() => import('./components/sections/FeaturedProduct'));
+const Portfolio = lazy(() => import('./components/sections/Portfolio'));
+const Workflow = lazy(() => import('./components/sections/Workflow'));
+const Testimonials = lazy(() => import('./components/sections/Testimonials'));
+const Blog = lazy(() => import('./components/sections/Blog'));
+const FAQ = lazy(() => import('./components/sections/FAQ'));
+const Contact = lazy(() => import('./components/sections/Contact'));
+const Footer = lazy(() => import('./components/layout/Footer'));
 
 function App() {
   return (
     <div className="font-sans text-gray-900 overflow-x-hidden">
       <Navbar />
       <Hero />
-      <Services />
-      <FeaturedProduct />
-      <Portfolio />
-      <Workflow />
-      <Testimonials />
-      <About />
-      <Founder />
-      <Legalitas />
-      <Blog />
-      <FAQ />
-      <Contact />
-      <Footer />
+      <Suspense fallback={null}>
+        <Services />
+        <FeaturedProduct />
+        <Portfolio />
+        <Workflow />
+        <Testimonials />
+        <About />
+        <Founder />
+        <Legalitas />
+        <Blog />
+        <FAQ />
+        <Contact />
+        <Footer />
+      </Suspense>
     </div>
   );
 }
 
 export default App;
-
