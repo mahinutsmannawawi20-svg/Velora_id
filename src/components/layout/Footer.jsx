@@ -46,6 +46,10 @@ const Footer = () => {
                     <p className="text-gray-600 mb-6 max-w-sm">
                         Mitra transformasi digital terpercaya untuk bisnis Anda. Kami menghadirkan solusi teknologi inovatif untuk mendorong pertumbuhan bisnis di era digital.
                     </p>
+                    <div className="text-gray-600 mb-6 flex flex-col gap-2 text-sm">
+                        <p>📍 Jakarta, Indonesia</p>
+                        <p>📧 velora@gmail.com</p>
+                    </div>
                     <div className="flex gap-3">
                         {socialLinks.map((social) => (
                             <a

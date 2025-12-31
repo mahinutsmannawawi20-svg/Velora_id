@@ -33,10 +33,10 @@ const Hero = () => {
 
                     {/* Main Heading */}
                     <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold text-white mb-6 sm:mb-8 leading-tight tracking-tight">
-                        Transformasi Digital
+                        Jasa Pembuatan Website
                         <br />
                         <span className="bg-gradient-to-r from-primary via-blue-400 to-purple-400 bg-clip-text text-transparent">
-                            Bisnis Masa Depan
+                            & Sistem Digital
                         </span>
                     </h1>
 
